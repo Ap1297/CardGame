@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthComponent } from './auth/auth.component';
-import { SharedComponent } from './shared/shared.component';
 import { UserComponent } from './user/user.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
@@ -15,8 +13,6 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
-    SharedComponent,
     UserComponent,
     UserProfileComponent,
     ForgotPasswordComponent,
