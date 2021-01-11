@@ -1,1 +1,74 @@
-<p>user-profile works!</p>
+<app-header></app-header>
+
+<div class="page-title-area">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="titlediv">
+                <h1 >User Profile</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="shape1"><img src="assets/img/shape1.png" alt="shape"></div>
+    <div class="shape2 rotateme"><img src="assets/img/shape2.svg" alt="shape"></div>
+    <div class="shape3"><img src="assets/img/shape3.svg" alt="shape"></div>
+    <div class="shape4"><img src="assets/img/shape4.svg" alt="shape"></div>
+    <div class="shape5"><img src="assets/img/shape5.png" alt="shape"></div>
+    <div class="shape6 rotateme"><img src="assets/img/shape4.svg" alt="shape"></div>
+    <div class="shape7"><img src="assets/img/shape4.svg" alt="shape"></div>
+    <div class="shape8 rotateme"><img src="assets/img/shape2.svg" alt="shape"></div>
+</div>
+
+
+<div class="wrapper fadeInDown">
+       
+    <div id="formContent">
+
+ <div  *ngIf='userDetails.length !== 0' >
+<form #updateForm="ngForm" (ngSubmit)="updateForm.valid && onSubmit(updateForm)">
+  <input type="text" #fullName="ngModel" [(ngModel)]="userDetails.fullName" name="fullName" placeholder="Full Name"
+  required  >
+
+  <input type="text" #email="ngModel" [(ngModel)]="userDetails.email" name="email" placeholder="Email"
+  required [pattern]="emailRegex"  >
+ 
+  <div class="input-icons"> 
+    <i class="fa fa-lock icon"  onclick="myFunction()"> 
+    </i>
+  <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password" placeholder="Password" id="myInput"
+  minlength="8" required [ngClass]="{'invalid-textbox' :updateForm.submitted && !password.valid }">
+  </div>
+    
+  <div *ngIf="updateForm.submitted && password.errors">
+    <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
+    <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 8 characters.</label>
+  </div>
+
+    <input type="text" #ipaddress="ngModel" [(ngModel)]="ipAddress"  name="ipaddress" style="display: none">    
+
+    <input type="text" #userType="ngModel" [(ngModel)]="UserType"  name="userType" style="display: none">    
+
+<input type="text" #mobileNo="ngModel" [(ngModel)]="userDetails.mobileNo" name="mobileNo" placeholder="Phone Number"
+  required>
+
+   
+    
+  <input type="submit" value="Update Details">
+</form>
+        </div>
+
+<div class="success" *ngIf="showSucessMessage">
+    Updated successfully
+</div>
+
+
+<div class="alert" *ngIf="serverErrorMessages">
+    {{serverErrorMessages}}
+</div>
+    
+    </div>
+</div>
+
+
+
+<app-footer></app-footer>
